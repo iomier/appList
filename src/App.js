@@ -1,26 +1,30 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
+import Home from "./home";
+import DraftJsEditor from "./components/textEditor/draftJsEditor";
+import TodoListApp from "./components/todoApp/TodoListApp";
+import WeatherApp from "./WeatherApp";
+import SimpleSearch from "./SimpleSearch";
+import PixApp from "./PixApp";
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+      <BrowserRouter>
+        <main className="container-fluid h-100 dot">
+          <div className="container">
+            <Switch>
+              <Route path="/todolist" component={TodoListApp} />
+              <Route path="/weather" component={WeatherApp} />
+              <Route path="/pix" component={PixApp} />
+              <Route path="/search" component={SimpleSearch} />
+              <Route path="/home" component={Home} />
+              <Route path="/editor" component={DraftJsEditor} />
+              <Redirect from="/" to="/home" />
+            </Switch>
+          </div>
+        </main>
+      </BrowserRouter>
     );
   }
 }
