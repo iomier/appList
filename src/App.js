@@ -10,7 +10,7 @@ import PixApp from "./PixApp";
 class App extends Component {
   render() {
     return (
-      <BrowserRouter>
+      <BrowserRouter basename="/">
         <main className="container-fluid h-100 dot">
           <div className="container">
             <Switch>
@@ -18,9 +18,9 @@ class App extends Component {
               <Route path="/weather" component={WeatherApp} />
               <Route path="/pix" component={PixApp} />
               <Route path="/search" component={SimpleSearch} />
-              <Route path="/home" component={Home} />
+              <Route path="/appList" component={Home} />
               <Route path="/editor" component={DraftJsEditor} />
-              <Redirect from="/" to="/home" />
+              <Redirect from="/" to="/appList" />
             </Switch>
           </div>
         </main>
